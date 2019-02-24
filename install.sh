@@ -19,7 +19,6 @@ update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8
 
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1
 update-alternatives --install /usr/bin/python python /usr/bin/python3.7 2
-update-alternatives --set python /usr/bin/python3.7
 
 cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 
