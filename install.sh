@@ -17,8 +17,6 @@ gem install gist
 locale-gen zh_CN.UTF-8
 update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8
 
-pip install --upgrade setuptools
-
 cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 
 cd ~/
