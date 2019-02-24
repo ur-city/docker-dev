@@ -13,6 +13,8 @@ apt-get update
 apt-get upgrade -y
 apt-get install  --allow-unauthenticated -y supervisor zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag tree ctags vim autojump mlocate redis-server ruby locales libpq-dev rpl python3.7 python3.7-dev python-pip
 
+pip2 install supervisor
+
 mkdir -p /run/sshd
 
 gem install gist
