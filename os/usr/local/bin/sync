@@ -2,7 +2,7 @@
 
 branch=`git branch 2> /dev/null | sed -e '/^[^*]/d' |awk -F' ' '{print $2}'`
 
-git add -u && git commit -m $branch 
+git add --update :/ && git commit -m $branch 
 
 git pull origin $branch
 
