@@ -46,6 +46,9 @@ nvm install 8.9.0
 nvm install node --latest-npm --reinstall-packages-from=node
 
 yarn global add coffeescript parcel-bundler coffeelint prettier
+
+cd $NOWDIR/os
+git clone git@code.aliyun.com:ur-yun/home.git root --depth=1
 rsync -av $NOWDIR/os/ /;
 
 git clone https://github.com/gmarik/Vundle.vim.git /usr/share/vim/vimfiles/bundle/Vundle.vim --depth=1;
