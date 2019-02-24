@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+NOWDIR=$(cd "$(dirname "$0")"; pwd)
+
 apt remove cmdtest
 apt-get install -y software-properties-common
 
