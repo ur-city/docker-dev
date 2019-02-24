@@ -17,7 +17,7 @@ apt-get install  --allow-unauthenticated -y supervisor zsh openssh-server yarn t
 gem install gist
 locale-gen zh_CN.UTF-8
 update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8
-
+update-alternatives --set python /usr/bin/python3.7
 
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
