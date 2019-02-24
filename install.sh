@@ -19,7 +19,6 @@ locale-gen zh_CN.UTF-8
 update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8
 
 
-chsh -s /usr/bin/zsh $USER
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
 cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 
@@ -48,3 +47,4 @@ sudo updatedb
 bash $NOWDIR/home/init.sh
 
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
+chsh -s /usr/bin/zsh $USER
