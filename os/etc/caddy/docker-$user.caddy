@@ -1,0 +1,16 @@
+https://${USER.NAME}.urer.top {
+    proxy / http://172.18.0.${USER.ID+100}:{USER.ID*100+10000} {
+        transparent
+    }
+
+    tls /root/.acme.sh/urer.top/fullchain.cer /root/.acme.sh/urer.top/urer.top.key
+
+    gzip
+    header / -Server
+    header / -Vary
+    log  / /var/log/caddy/psql.urer.top.log "{status} {size} {when_unix} {remote} {method} {uri_escaped} \"{>Referer}\" \"{>User-Agent}\""
+    errors /var/log/caddy/psql.urer.top.error.log 
+}
+http://{USER.NAME}.urer.top {
+    redir https://{host}{uri}
+}
