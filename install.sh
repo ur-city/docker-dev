@@ -45,6 +45,6 @@ sudo rsync -av $NOWDIR/os/ /;
 sudo git clone https://github.com/gmarik/Vundle.vim.git /usr/share/vim/vimfiles/bundle/Vundle.vim --depth=1;
 sudo vim +PluginInstall +qall;
 sudo updatedb
+bash $NOWDIR/home/init.sh
 
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
-./home/init.sh
