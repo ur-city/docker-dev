@@ -22,7 +22,8 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime
 
 cd ~/
-
+mkdir -p ~/.ssh
+chmod 700 ~/.ssh
 ssh_host()
 {
 ssh-keyscan -t rsa,dsa $1 >> ~/.ssh/known_hosts
