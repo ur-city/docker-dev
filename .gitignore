@@ -1,0 +1,15 @@
+# Miscellaneous
+*.bak
+*.class
+*.lock
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.dist/
+.history
+.svn/
+node_modules/
+package-lock.json
+
