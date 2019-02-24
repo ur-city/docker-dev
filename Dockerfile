@@ -10,4 +10,4 @@ RUN cd /tmp;\
     rm -rf /tmp/docker
 
 USER root
-ENTRYPOINT ["/etc/rc.local"]
+CMD ["/etc/rc.local"]
