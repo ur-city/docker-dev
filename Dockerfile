@@ -21,7 +21,8 @@ mkdir -p /run/sshd;\
 gem install gist;\
 locale-gen zh_CN.UTF-8;\
 update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8;\
-cp /usr/share/zoneinfo/Asia/Shanghai  /etc/localtime;
+echo "Asia/Shanghai" > /etc/timezone;\ 
+dpkg-reconfigure -f noninteractive tzdata
 
 RUN git clone https://github.com/gmarik/Vundle.vim.git /usr/share/vim/vimfiles/bundle/Vundle.vim --depth=1;\
 vim +PluginInstall +qall;\
