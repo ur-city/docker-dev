@@ -31,10 +31,14 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1;\
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2;\
 update-alternatives --set python /usr/bin/python2.7;\
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
+
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
+export NVM_DIR="$HOME/.nvm";\
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";\
 nvm install 8.9.0;\
 nvm install node --latest-npm --reinstall-packages-from=node;\
-yarn global add coffeescript parcel-bundler coffeelint prettier;\
+yarn global add coffeescript parcel-bundler coffeelint prettier;
+
 
 RUN cd /tmp;\
     git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
