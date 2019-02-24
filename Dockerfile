@@ -2,7 +2,7 @@ FROM ubuntu:18.10
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN apt-get update;
+RUN apt-get update;\
 apt-get install -y git;\
 apt remove cmdtest;\
 apt-get install -y software-properties-common curl wget sudo rsync;\
