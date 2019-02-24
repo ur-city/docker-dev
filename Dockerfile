@@ -15,13 +15,13 @@ add-apt-repository ppa:deadsnakes/ppa -y;
 
 RUN apt-get update;\
 apt-get upgrade -y;\
-apt-get install --allow-unauthenticated -y supervisor zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag tree ctags vim autojump mlocate redis-server ruby locales libpq-dev rpl python3.7 python3.7-dev python-pip;\
+apt-get install --allow-unauthenticated -y supervisor zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag tree ctags vim autojump mlocate redis-server ruby locales libpq-dev rpl python3.7 python3.7-dev python-pip tzdata;\
 pip2 install supervisor;\
 mkdir -p /run/sshd;\
 gem install gist;\
 locale-gen zh_CN.UTF-8;\
 update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8;\
-echo "Asia/Shanghai" > /etc/timezone;\ 
+ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
 dpkg-reconfigure -f noninteractive tzdata
 
 RUN git clone https://github.com/gmarik/Vundle.vim.git /usr/share/vim/vimfiles/bundle/Vundle.vim --depth=1;\
