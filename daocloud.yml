@@ -12,6 +12,6 @@ stages:
     tags:
     - .*
   build_dir: /
-  cache: false
+  cache: true 
   dockerfile_path: /Dockerfile
 
