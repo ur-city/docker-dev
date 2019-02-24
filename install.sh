@@ -3,7 +3,7 @@
 NOWDIR=$(cd "$(dirname "$0")"; pwd)
 
 apt remove cmdtest
-apt-get install -y software-properties-common curl wget
+apt-get install -y software-properties-common curl wget sudo rsync
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 add-apt-repository ppa:chris-lea/redis-server -y
@@ -40,11 +40,11 @@ nvm install 8.9.0
 nvm install node --latest-npm --reinstall-packages-from=node
 
 yarn global add coffeescript parcel-bundler coffeelint prettier
-sudo rsync -av $NOWDIR/os/ /;
+rsync -av $NOWDIR/os/ /;
 
-sudo git clone https://github.com/gmarik/Vundle.vim.git /usr/share/vim/vimfiles/bundle/Vundle.vim --depth=1;
-sudo vim +PluginInstall +qall;
-sudo updatedb
+git clone https://github.com/gmarik/Vundle.vim.git /usr/share/vim/vimfiles/bundle/Vundle.vim --depth=1;
+vim +PluginInstall +qall;
+updatedb
 bash $NOWDIR/home/init.sh
 
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh
