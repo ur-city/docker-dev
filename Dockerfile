@@ -36,6 +36,9 @@ nvm install 8.9.0;\
 nvm install node --latest-npm --reinstall-packages-from=node;\
 yarn global add coffeescript parcel-bundler coffeelint prettier;
 
+RUN curl https://bootstrap.pypa.io/get-pip.py | python3;\
+pip3 install virtualenv ipython
+
 RUN cd /tmp;\
     git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
     bash /tmp/docker/install.sh;\
