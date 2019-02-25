@@ -1,0 +1,15 @@
+[Unit]
+Description=Redis In-Memory Cache 
+After=network.target
+ 
+[Service]
+User=redis
+Group=redis
+Type=forking
+ExecStart=/usr/bin/redis-server /etc/redis/cache.conf
+ExecStop=/usr/bin/redis-cli shutdown
+Restart=always
+ 
+[Install]
+WantedBy=multi-user.target
+
