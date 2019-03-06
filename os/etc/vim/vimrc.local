@@ -398,6 +398,8 @@ autocmd BufWritePre *.py :%s/^\(\s*print\)\s\+\(.*\)/\1(\2)/e
 autocmd BufWritePre *.{vue,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js} :%s/\t/    /ge
 autocmd BufWritePre *.{txt,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js,vue,sass} :%s/\s\+$//e
 au BufWritePre *.html,*.scss,*.css :Autoformat
+autocmd FileType vue syntax sync fromstart
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css.coffee.pug.scss.sass
 
 let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 set backupcopy=yes
