@@ -399,6 +399,7 @@ autocmd BufWritePre *.{vue,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js} :%s/\
 autocmd BufWritePre *.{txt,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js,vue,sass} :%s/\s\+$//e
 au BufWritePre *.html,*.scss,*.css :Autoformat
 autocmd FileType vue syntax sync fromstart
+set nofoldenable
 
 let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 set backupcopy=yes
