@@ -110,6 +110,7 @@ func FormatRun()
     if &filetype == 'js'||&filetype == 'javascript'
         call JsBeautify()
         exec "w"
+        exec "!node %"
     endif
 endfunc
 "结束定义FormatRun
