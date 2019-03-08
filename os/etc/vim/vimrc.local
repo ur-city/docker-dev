@@ -359,7 +359,7 @@ let g:rainbow_active = 1    "彩虹括号
 """""""""""""""""""""""""""""""""""""""
 "set synmaxcol=128
 set ttyfast
-set ttyscroll=3
+"set ttyscroll=3
 set lazyredraw
 """""""""""""""""""""""""""""""""""""""
 "
