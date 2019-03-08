@@ -9,12 +9,19 @@ apt-get install -y software-properties-common curl wget sudo rsync;
 
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;\
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list;\
+add-apt-repository ppa:neovim-ppa/stable -y;\
 add-apt-repository ppa:chris-lea/redis-server -y;\
 add-apt-repository ppa:jonathonf/vim -y;\
 add-apt-repository ppa:deadsnakes/ppa -y;\
 apt-get update;\
 apt-get upgrade -y;\
-apt-get install --allow-unauthenticated -y supervisor zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag tree ctags vim autojump mlocate redis-server ruby locales libpq-dev rpl python3.7 python3.7-dev python-pip tzdata postgresql-client lsof;\
+apt-get install --allow-unauthenticated -y supervisor zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag tree ctags neovim autojump mlocate redis-server ruby locales libpq-dev rpl python3.7 python3.7-dev python-pip tzdata postgresql-client lsof;\
+update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60;\
+update-alternatives --set vi /usr/bin/nvim;\
+update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60;\
+update-alternatives --set vim /usr/bin/nvim;\
+update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
+update-alternatives --set editor /usr/bin/nvim;\
 pip2 install supervisor;\
 mkdir -p /run/sshd;\
 gem install gist;\
