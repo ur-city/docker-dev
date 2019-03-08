@@ -33,7 +33,7 @@ export NVM_DIR="$HOME/.nvm";\
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";\
 nvm install 8.9.0;\
 nvm install node --latest-npm --reinstall-packages-from=node;\
-yarn global add coffeescript parcel-bundler coffeelint prettier js2coffee;
+yarn global add coffeescript parcel-bundler coffeelint prettier js2coffee npm-check-updates;
 
 RUN curl https://bootstrap.pypa.io/get-pip.py | python3;\
 pip3 install virtualenv ipython
