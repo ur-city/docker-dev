@@ -33,9 +33,9 @@ pip3 install virtualenv ipython;
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
 export NVM_DIR="$HOME/.nvm";\
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";\
-nvm install stable;nvm install 8.9.0;
-
-RUN yarn global add coffeescript parcel-bundler coffeelint prettier js2coffee npm-check-updates;
+nvm install 8.9.0;\
+nvm install stable;\
+yarn global add coffeescript parcel-bundler coffeelint prettier js2coffee npm-check-updates;
 
 RUN update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60;\
 update-alternatives --set vi /usr/bin/nvim;\
