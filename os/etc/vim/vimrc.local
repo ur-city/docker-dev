@@ -20,7 +20,7 @@ call plug#begin('/usr/share/vim/vimfiles/bundle')
 " Plug 'terryma/vim-multiple-cursors'       "多光标选择
 " Plug 'vim-scripts/matchit.zip'            "html标签跳转
 "Plug 'btyh17mxy/yapf.vim'
-"Plug 'floobits/floobits-neovim'            "协作开发
+Plug 'floobits/floobits-neovim'            "协作开发
 "Plug 'google/yapf', { 'rtp': 'plugins/vim' }
 "Plug 'jlfwong/vim-mercenary'              "hg插件，支持blame和diff
 "Plug 'kballard/vim-swift'
@@ -35,7 +35,7 @@ Plug 'godlygeek/tabular'                  "自动对齐
 Plug 'hynek/vim-python-pep8-indent',{'for':'py'}       "python自动缩进
 Plug 'kchmck/vim-coffee-script',{'for':'coffee'}           "Coffee-script语法高亮
 Plug 'keith/swift.vim',{'for':'swift'}
-Plug 'kien/ctrlp.vim'                     "根据文件名和文件内容模糊搜索并打开文件
+Plug 'ctrlpvim/ctrlp.vim'                     "根据文件名和文件内容模糊搜索并打开文件
 Plug 'luochen1990/rainbow'                "彩虹括号，匹配的括号显示为同一颜色
 Plug 'maksimr/vim-jsbeautify',{'for':'js'}
 Plug 'posva/vim-vue',{'for':'vue'}
@@ -186,8 +186,9 @@ retab
 "
 """""""""""""""""""""""""""""""""""""""
 let g:ctrlp_custom_ignore = {
-            \'file' : '\v\.(pyc|html\.py)$',
-            \}
+    \ 'dir':  '\v[\/](node_modules|dist|\.(dist|git|hg|svn))$',
+    \'file' : '\v\.(pyc|html\.py|swp|map)$',
+\}
 
 
 """""""""""""""""""""""""""""""""""""""
