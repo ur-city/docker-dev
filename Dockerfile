@@ -42,10 +42,10 @@ nvm install stable;\
 yarn global add coffeescript parcel-bundler coffeelint prettier js2coffee npm-check-updates;\
 curl https://bootstrap.pypa.io/get-pip.py | python3;\
 pip3 install virtualenv ipython;\
+mkdir -p /run/sshd;\
 cd /tmp;\
 git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
 bash /tmp/docker/install.sh;\
-mkdir -p /run/sshd;\
 rm -rf /tmp/docker;
 
 
