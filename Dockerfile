@@ -34,19 +34,16 @@ update-alternatives --set editor /usr/bin/nvim;\
 curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\ 
 vim +PlugInstall +qall;\ 
 pip2 install supervisor;\
-mkdir -p /run/sshd;
-
-RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
+mkdir -p /run/sshd;\
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
 export NVM_DIR="$HOME/.nvm";\
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";\
 nvm install 8.9.0;\
 nvm install stable;\
-yarn global add coffeescript parcel-bundler coffeelint prettier js2coffee npm-check-updates;
-
-RUN curl https://bootstrap.pypa.io/get-pip.py | python3;\
-pip3 install virtualenv ipython
-
-RUN cd /tmp;\
+yarn global add coffeescript parcel-bundler coffeelint prettier js2coffee npm-check-updates;\
+curl https://bootstrap.pypa.io/get-pip.py | python3;\
+pip3 install virtualenv ipython;\
+cd /tmp;\
 git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
 bash /tmp/docker/install.sh;\
 rm -rf /tmp/docker;

@@ -20,7 +20,7 @@ call plug#begin('/usr/share/vim/vimfiles/bundle')
 " Plug 'terryma/vim-multiple-cursors'       "多光标选择
 " Plug 'vim-scripts/matchit.zip'            "html标签跳转
 "Plug 'btyh17mxy/yapf.vim'
-Plug 'floobits/floobits-neovim'            "协作开发
+"Plug 'floobits/floobits-neovim'            "协作开发
 "Plug 'google/yapf', { 'rtp': 'plugins/vim' }
 "Plug 'jlfwong/vim-mercenary'              "hg插件，支持blame和diff
 "Plug 'kballard/vim-swift'
@@ -112,7 +112,6 @@ endfunc
 "结束定义FormatRun
 
 "定义FormartSrc()
-"需使用以下的格式化插件https://bitbucket.org/zuroc/42qu-linux-config
 func FormartSrc()
     exec "w"
     if &filetype == 'c'
@@ -134,18 +133,6 @@ func FormartSrc()
     exec "e! %"
 endfunc
 "结束定义FormartSrc
-
-"show hg diff with vim
-function HgCiDiff()
-    "In .hgrc editor option I call vim "+HgCiDiff()"
-    "It opens new split with diff inside
-    rightbelow  vnew
-    :.!hg diff
-    set ft=diff
-    saveas! /tmp/hgdiff.txt
-    execute "normal \<c-w>w"
-endfunction
-"end
 
 
 """""""""""""""""""""""""""""""""""""""
