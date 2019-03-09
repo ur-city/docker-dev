@@ -369,8 +369,8 @@ map <F12> :call FormatRun()<CR>
 "ag搜索
 nmap <C-S>f :CtrlSF
 nmap <C-S>o :CtrlSFOpen<CR>
-nmap ss :CtrlSF <C-R><C-W><CR>
-vnoremap ss y:CtrlSF <C-R>"<CR>
+nmap ag :CtrlSF <C-R><C-W><CR>
+vnoremap ag y:CtrlSF <C-R>"<CR>
 vnoremap <C-Tab> :Tabularize <C-R><C-W><CR>
 vnoremap <Backspace> :Commentary <CR>
 
