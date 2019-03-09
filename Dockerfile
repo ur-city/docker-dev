@@ -5,9 +5,8 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update;\
 apt-get install -y git;\
 apt remove cmdtest;\
-apt-get install -y software-properties-common curl wget sudo rsync;
-
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;\
+apt-get install -y software-properties-common curl wget sudo rsync;\
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;\
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list;\
 add-apt-repository ppa:neovim-ppa/stable -y;\
 add-apt-repository ppa:chris-lea/redis-server -y;\
@@ -21,24 +20,22 @@ locale-gen zh_CN.UTF-8;\
 update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8;\
 ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
 dpkg-reconfigure -f noninteractive tzdata;\
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh;\
-update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1;\
+mkdir -p /run/sshd;
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh;
+
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1;\
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2;\
 update-alternatives --set python /usr/bin/python2.7;\
+curl https://bootstrap.pypa.io/get-pip.py | python3;\
 pip2 install supervisor;\
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
+pip3 install virtualenv ipython;\
+
+RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
 export NVM_DIR="$HOME/.nvm";\
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh";\
-nvm install 8.9.0;\
-nvm install stable;\
-yarn global add coffeescript parcel-bundler coffeelint prettier js2coffee npm-check-updates;\
-curl https://bootstrap.pypa.io/get-pip.py | python3;\
-pip3 install virtualenv ipython;\
-mkdir -p /run/sshd;\
-cd /tmp;\
-git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
-bash /tmp/docker/install.sh;\
-rm -rf /tmp/docker;
+nvm install stable;nvm install 8.9.0;
+
+RUN yarn global add coffeescript parcel-bundler coffeelint prettier js2coffee npm-check-updates;
 
 RUN update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60;\
 update-alternatives --set vi /usr/bin/nvim;\
@@ -49,5 +46,11 @@ update-alternatives --set editor /usr/bin/nvim;\
 curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\ 
 nvim +PlugInstall +qall;
 
+RUN cd /tmp;\
+git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
+bash /tmp/docker/install.sh;\
+rm -rf /tmp/docker;
+
 USER root
+
 CMD ["/etc/rc.local"]
