@@ -42,7 +42,7 @@ update-alternatives --set vi /usr/bin/nvim;\
 update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60;\
 update-alternatives --set vim /usr/bin/nvim;\
 update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
-update-alternatives --set editor /usr/bin/nvim;\
+update-alternatives --set editor /usr/bin/nvim;
 
 RUN cd /tmp;\
 git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
