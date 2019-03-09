@@ -20,7 +20,7 @@ locale-gen zh_CN.UTF-8;\
 update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8;\
 ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
 dpkg-reconfigure -f noninteractive tzdata;\
-mkdir -p /run/sshd;
+mkdir -p /run/sshd;\
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh;
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1;\
@@ -28,7 +28,7 @@ update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2;\
 update-alternatives --set python /usr/bin/python2.7;\
 curl https://bootstrap.pypa.io/get-pip.py | python3;\
 pip2 install supervisor;\
-pip3 install virtualenv ipython;\
+pip3 install virtualenv ipython;
 
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
 export NVM_DIR="$HOME/.nvm";\
