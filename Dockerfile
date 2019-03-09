@@ -25,13 +25,6 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1;\
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2;\
 update-alternatives --set python /usr/bin/python2.7;\
-update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60;\
-update-alternatives --set vi /usr/bin/nvim;\
-update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60;\
-update-alternatives --set vim /usr/bin/nvim;\
-update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
-update-alternatives --set editor /usr/bin/nvim;\
-curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\ 
 pip2 install supervisor;\
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
 export NVM_DIR="$HOME/.nvm";\
@@ -47,6 +40,14 @@ git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
 bash /tmp/docker/install.sh;\
 rm -rf /tmp/docker;
 
-RUN vim +PlugInstall +qall;
+RUN update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60;\
+update-alternatives --set vi /usr/bin/nvim;\
+update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60;\
+update-alternatives --set vim /usr/bin/nvim;\
+update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
+update-alternatives --set editor /usr/bin/nvim;\
+curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\ 
+nvim +PlugInstall +qall;
+
 USER root
 CMD ["/etc/rc.local"]
