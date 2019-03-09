@@ -4,49 +4,49 @@
 " neovim 首先执行下面的命令安装
 " curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 " 安装命令 
-" sudo vim +:PlugInstall +:qall 
+" sudo vim +PlugInstall +qall 
 """""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 set mouse=
 "filetype off                  " required
 call plug#begin('/usr/share/vim/vimfiles/bundle')
-" Plug 'Valloric/YouCompleteMe'             "自动补全
-" Plug 'Yggdroot/indentLine'                "垂直缩进对齐线
-" Plug 'bling/vim-airline'                  "底部状态栏
-" Plug 'chrisbra/csv.vim'                   "CSV文件插件
-" Plug 'edkolev/tmuxline.vim'               "Airline支持tmux
-" Plug 'gregsexton/MatchTag'                "html标签匹配高亮
-" Plug 'mattn/emmet-vim'                    "zen-codeing
-" Plug 'terryma/vim-multiple-cursors'       "多光标选择
-" Plug 'vim-scripts/matchit.zip'            "html标签跳转
-"Plug 'btyh17mxy/yapf.vim'
-"Plug 'floobits/floobits-neovim'            "协作开发
-"Plug 'google/yapf', { 'rtp': 'plugins/vim' }
-"Plug 'jlfwong/vim-mercenary'              "hg插件，支持blame和diff
-"Plug 'kballard/vim-swift'
-"Plug 'tell-k/vim-autopep8'                  "自动格式化
-"Plug 'ludovicchabant/vim-lawrencium'      "hg插件
+" Plug 'Valloric/YouCompleteMe'                " 自动补全
+" Plug 'Yggdroot/indentLine'                   " 垂直缩进对齐线
+" Plug 'bling/vim-airline'                     " 底部状态栏
+" Plug 'chrisbra/csv.vim'                      " CSV文件插件
+" Plug 'edkolev/tmuxline.vim'                  " Airline支持tmux
+" Plug 'gregsexton/MatchTag'                   " html标签匹配高亮
+" Plug 'mattn/emmet-vim'                       " zen-codeing
+" Plug 'terryma/vim-multiple-cursors'          " 多光标选择
+" Plug 'vim-scripts/matchit.zip'               " html标签跳转
+" Plug 'btyh17mxy/yapf.vim'
+" Plug 'floobits/floobits-neovim'              " 协作开发
+" Plug 'google/yapf', { 'rtp': 'plugins/vim' }
+" Plug 'jlfwong/vim-mercenary'                 " hg插件，支持blame和diff
+" Plug 'kballard/vim-swift'
+" Plug 'tell-k/vim-autopep8'                   " 自动格式化
+" Plug 'ludovicchabant/vim-lawrencium'         " hg插件
 Plug 'Chiel92/vim-autoformat'
 Plug 'cakebaker/scss-syntax.vim',{'for':'scss'}
 Plug 'digitaltoad/vim-pug',{'for':'pug'}
-Plug 'dyng/ctrlsf.vim'                    "快速打开文件
-Plug 'ervandew/supertab'                  "supertab 补全
-Plug 'godlygeek/tabular'                  "自动对齐
-Plug 'hynek/vim-python-pep8-indent',{'for':'py'}       "python自动缩进
-Plug 'kchmck/vim-coffee-script',{'for':'coffee'}           "Coffee-script语法高亮
+Plug 'ervandew/supertab'                         " supertab 补全
+Plug 'godlygeek/tabular'                         " 自动对齐
+Plug 'hynek/vim-python-pep8-indent',{'for':'py'} " python自动缩进
+Plug 'kchmck/vim-coffee-script',{'for':'coffee'} " Coffee-script语法高亮
 Plug 'keith/swift.vim',{'for':'swift'}
-Plug 'ctrlpvim/ctrlp.vim'                     "根据文件名和文件内容模糊搜索并打开文件
-Plug 'luochen1990/rainbow'                "彩虹括号，匹配的括号显示为同一颜色
+Plug 'ctrlpvim/ctrlp.vim'                        " 根据文件名和文件内容模糊搜索并打开文件
+Plug 'luochen1990/rainbow'                       " 彩虹括号，匹配的括号显示为同一颜色
 Plug 'maksimr/vim-jsbeautify',{'for':'js'}
 Plug 'posva/vim-vue',{'for':'vue'}
-Plug 'mileszs/ack.vim'                      "ag插件
-Plug 'scrooloose/nerdtree'                 "文件浏览
-Plug 'tpope/vim-commentary'                "批量注释
-Plug 'vim-scripts/ctags.vim'               "生成Tag，跟TagList搭配
-Plug 'vim-scripts/mako.vim',{'for':'mako'} "mako语法高亮
-Plug 'vim-scripts/taglist.vim'             "显示Tag
-Plug 'w0rp/ale'                            "异步语法检查
-Plug 'yegappan/mru'                        "最近打开过的文件
+Plug 'urwork/ack.vim'                            " ag插件
+Plug 'scrooloose/nerdtree'                       " 文件浏览
+Plug 'tpope/vim-commentary'                      " 批量注释
+Plug 'vim-scripts/ctags.vim'                     " 生成Tag，跟TagList搭配
+Plug 'vim-scripts/mako.vim',{'for':'mako'}       " mako语法高亮
+Plug 'vim-scripts/taglist.vim'                   " 显示Tag
+Plug 'w0rp/ale'                                  " 异步语法检查
+Plug 'yegappan/mru'                              " 最近打开过的文件
+Plug 'dyng/ctrlsf.vim'                           " 快速打开文件
 call plug#end()
 filetype plugin indent on    " required
 
@@ -367,14 +367,22 @@ map <F12> :call FormatRun()<CR>
 "map <F3> :set paste<CR>
 "map <F2> :set nopaste<CR>
 "ag搜索
-nmap <C-S>f :CtrlSF
-nmap <C-S>o :CtrlSFOpen<CR>
-nmap ag :CtrlSF <C-R><C-W><CR>
-vnoremap ag y:CtrlSF <C-R>"<CR>
-vnoremap <C-Tab> :Tabularize <C-R><C-W><CR>
+
+
+let g:ctrlsf_auto_focus = {
+    \ "at": "done",
+    \ "duration_less_than": 1000
+    \ }
+nmap ag :AG <C-R><C-W><CR>
+nmap ss :CtrlSF <C-R><C-W><CR>
+vnoremap ss y:CtrlSF <C-R>"<CR>
+vnoremap <Tab> :Tab /
+vnoremap <Tab>: :Tab /:<CR>
+vnoremap <Tab>, :Tab /,<CR>
+vnoremap <Tab>= :Tab /=<CR>
 vnoremap <Backspace> :Commentary <CR>
 
-nmap <C-N>t :NERDTree<cr>
+nmap tt :NERDTreeToggle<cr>
 nmap mr :MRU<cr>
 "nmap tl :TlistToggle<cr>
 "nmap bn :bn<cr>
