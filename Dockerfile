@@ -43,14 +43,15 @@ update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60;\
 update-alternatives --set vim /usr/bin/nvim;\
 update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
 update-alternatives --set editor /usr/bin/nvim;\
-curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
-
-RUN nvim +PlugInstall +qall;
 
 RUN cd /tmp;\
 git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
 bash /tmp/docker/install.sh;\
 rm -rf /tmp/docker;
+
+# vim配置文件在上面的仓库里面，所以这一行必须放到之后执行
+RUN curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
+nvim +PlugInstall +qall;
 
 USER root
 
