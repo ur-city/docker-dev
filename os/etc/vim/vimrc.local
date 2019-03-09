@@ -1,57 +1,53 @@
 """"""""""""""""""""""""""""""""""""""
 "
-" bundle 插件管理
-" 首先执行下面的命令安装Vundle
-" git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" 插件管理
+" neovim 首先执行下面的命令安装
+" curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 
 " 安装命令 
-" sudo vim +PluginInstall +qall
+" sudo vim +:PlugInstall +:qall 
 """""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 set mouse=
-filetype off                  " required
-set rtp+=/usr/share/vim/vimfiles/bundle/Vundle.vim
-call vundle#rc('/usr/share/vim/vimfiles/bundle')
-Plugin 'posva/vim-vue'
-Plugin 'Chiel92/vim-autoformat'
-"Plugin 'kballard/vim-swift'
-Plugin 'keith/swift.vim'
-Plugin 'w0rp/ale'
-Plugin 'gmarik/Vundle.vim'                  "插件管理
-" Plugin 'Valloric/YouCompleteMe'             "自动补全
-" Plugin 'Yggdroot/indentLine'                "垂直缩进对齐线
-" Plugin 'bling/vim-airline'                  "底部状态栏
-" Plugin 'chrisbra/csv.vim'                   "CSV文件插件
-" Plugin 'edkolev/tmuxline.vim'               "Airline支持tmux
-" Plugin 'gregsexton/MatchTag'                "html标签匹配高亮
-" Plugin 'mattn/emmet-vim'                    "zen-codeing
-" Plugin 'terryma/vim-multiple-cursors'       "多光标选择
-" Plugin 'vim-scripts/matchit.zip'            "html标签跳转
-"Plugin 'btyh17mxy/yapf.vim'
-"Plugin 'google/yapf', { 'rtp': 'plugins/vim' }
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'dyng/ctrlsf.vim'                    "让ag支持上下文
-Plugin 'ervandew/supertab'                  "supertab 补全
-Plugin 'godlygeek/tabular'                  "自动对齐
-Plugin 'hynek/vim-python-pep8-indent'       "python自动缩进
-Plugin 'jlfwong/vim-mercenary'              "hg插件，支持blame和diff
-Plugin 'kchmck/vim-coffee-script'           "Coffee-script语法高亮
-Plugin 'keitheis/vim-plim'                  "plim
-Plugin 'kien/ctrlp.vim'                     "根据文件名和文件内容模糊搜索并打开文件
-Plugin 'ludovicchabant/vim-lawrencium'      "hg插件
-Plugin 'luochen1990/rainbow'                "彩虹括号，匹配的括号显示为同一颜色
-Plugin 'rking/ag.vim'                       "ag插件
-Plugin 'scrooloose/nerdtree'                "文件浏览
-Plugin 'tpope/vim-commentary'               "批量注释
-Plugin 'vim-scripts/ctags.vim'              "生成Tag，跟TagList搭配
-Plugin 'vim-scripts/mako.vim'               "mako语法高亮
-Plugin 'vim-scripts/taglist.vim'            "显示Tag
-Plugin 'wavded/vim-stylus'                  "plim
-Plugin 'digitaltoad/vim-pug'
-Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'yegappan/mru'                       "最近打开过的文件
-"Plugin 'tell-k/vim-autopep8'                  "自动格式化
-
-call vundle#end()            " required
+"filetype off                  " required
+call plug#begin('/usr/share/vim/vimfiles/bundle')
+" Plug 'Valloric/YouCompleteMe'             "自动补全
+" Plug 'Yggdroot/indentLine'                "垂直缩进对齐线
+" Plug 'bling/vim-airline'                  "底部状态栏
+" Plug 'chrisbra/csv.vim'                   "CSV文件插件
+" Plug 'edkolev/tmuxline.vim'               "Airline支持tmux
+" Plug 'gregsexton/MatchTag'                "html标签匹配高亮
+" Plug 'mattn/emmet-vim'                    "zen-codeing
+" Plug 'terryma/vim-multiple-cursors'       "多光标选择
+" Plug 'vim-scripts/matchit.zip'            "html标签跳转
+"Plug 'btyh17mxy/yapf.vim'
+"Plug 'floobits/floobits-neovim'            "协作开发
+"Plug 'google/yapf', { 'rtp': 'plugins/vim' }
+"Plug 'jlfwong/vim-mercenary'              "hg插件，支持blame和diff
+"Plug 'kballard/vim-swift'
+"Plug 'tell-k/vim-autopep8'                  "自动格式化
+"Plug 'ludovicchabant/vim-lawrencium'      "hg插件
+Plug 'Chiel92/vim-autoformat'
+Plug 'cakebaker/scss-syntax.vim',{'for':'scss'}
+Plug 'digitaltoad/vim-pug',{'for':'pug'}
+Plug 'dyng/ctrlsf.vim'                    "让ag支持上下文
+Plug 'ervandew/supertab'                  "supertab 补全
+Plug 'godlygeek/tabular'                  "自动对齐
+Plug 'hynek/vim-python-pep8-indent',{'for':'py'}       "python自动缩进
+Plug 'kchmck/vim-coffee-script',{'for':'coffee'}           "Coffee-script语法高亮
+Plug 'keith/swift.vim',{'for':'swift'}
+Plug 'kien/ctrlp.vim'                     "根据文件名和文件内容模糊搜索并打开文件
+Plug 'luochen1990/rainbow'                "彩虹括号，匹配的括号显示为同一颜色
+Plug 'maksimr/vim-jsbeautify',{'for':'js'}
+Plug 'posva/vim-vue',{'for':'vue'}
+Plug 'rking/ag.vim'                        "ag插件
+Plug 'scrooloose/nerdtree'                 "文件浏览
+Plug 'tpope/vim-commentary'                "批量注释
+Plug 'vim-scripts/ctags.vim'               "生成Tag，跟TagList搭配
+Plug 'vim-scripts/mako.vim',{'for':'mako'} "mako语法高亮
+Plug 'vim-scripts/taglist.vim'             "显示Tag
+Plug 'w0rp/ale'                            "异步语法检查
+Plug 'yegappan/mru'                        "最近打开过的文件
+call plug#end()
 filetype plugin indent on    " required
 
 autocmd FileType python set commentstring=#\ %s
@@ -401,8 +397,8 @@ autocmd BufWritePre *.{txt,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js,vue,sa
 au BufWritePre *.html,*.scss,*.css :Autoformat
 autocmd FileType vue syntax sync fromstart
 autocmd BufWritePre *.vue :syntax sync fromstart
-set nofoldenable
 
 let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 set backupcopy=yes
+set nofoldenable
 set viminfo='100,<10000,s1000,h
