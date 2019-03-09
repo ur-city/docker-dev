@@ -43,8 +43,9 @@ update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60;\
 update-alternatives --set vim /usr/bin/nvim;\
 update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
 update-alternatives --set editor /usr/bin/nvim;\
-curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\ 
-nvim +PlugInstall +qall;
+curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;
+
+RUN nvim +PlugInstall +qall;
 
 RUN cd /tmp;\
 git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
