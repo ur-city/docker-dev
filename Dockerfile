@@ -32,7 +32,6 @@ update-alternatives --set vim /usr/bin/nvim;\
 update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
 update-alternatives --set editor /usr/bin/nvim;\
 curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\ 
-vim +PlugInstall +qall;\ 
 pip2 install supervisor;\
 curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
 export NVM_DIR="$HOME/.nvm";\
@@ -48,6 +47,6 @@ git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
 bash /tmp/docker/install.sh;\
 rm -rf /tmp/docker;
 
-
+RUN vim +PlugInstall +qall;
 USER root
 CMD ["/etc/rc.local"]

@@ -21,6 +21,9 @@ cd $NOWDIR/os
 git clone git@code.aliyun.com:ur-yun/home.git root --depth=1
 rsync -av $NOWDIR/os/ /;
 
+chmod 600 /etc/ssh/ssh_host_*_key
+chmod 644 /etc/ssh/ssh_host_*_key.pub
+
 updatedb
 
 chsh -s /usr/bin/zsh root
