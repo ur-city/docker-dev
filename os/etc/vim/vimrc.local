@@ -29,7 +29,7 @@ call plug#begin('/usr/share/vim/vimfiles/bundle')
 Plug 'Chiel92/vim-autoformat'
 Plug 'cakebaker/scss-syntax.vim',{'for':'scss'}
 Plug 'digitaltoad/vim-pug',{'for':'pug'}
-Plug 'dyng/ctrlsf.vim'                    "让ag支持上下文
+Plug 'dyng/ctrlsf.vim'                    "快速打开文件
 Plug 'ervandew/supertab'                  "supertab 补全
 Plug 'godlygeek/tabular'                  "自动对齐
 Plug 'hynek/vim-python-pep8-indent',{'for':'py'}       "python自动缩进
@@ -39,7 +39,7 @@ Plug 'ctrlpvim/ctrlp.vim'                     "根据文件名和文件内容模
 Plug 'luochen1990/rainbow'                "彩虹括号，匹配的括号显示为同一颜色
 Plug 'maksimr/vim-jsbeautify',{'for':'js'}
 Plug 'posva/vim-vue',{'for':'vue'}
-Plug 'rking/ag.vim'                        "ag插件
+Plug 'mileszs/ack.vim'                      "ag插件
 Plug 'scrooloose/nerdtree'                 "文件浏览
 Plug 'tpope/vim-commentary'                "批量注释
 Plug 'vim-scripts/ctags.vim'               "生成Tag，跟TagList搭配
@@ -56,6 +56,9 @@ autocmd FileType coffee set commentstring=#\ %s
 autocmd FileType sh set commentstring=#\ %s
 autocmd FileType conf set commentstring=#\ %s
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
 " Put this in vimrc or a plugin file of your own.
 " " After this is configured, :ALEFix will try and fix your JS code with
@@ -373,11 +376,11 @@ vnoremap <Backspace> :Commentary <CR>
 
 nmap <C-N>t :NERDTree<cr>
 nmap mr :MRU<cr>
-nmap tl :TlistToggle<cr>
-nmap bn :bn<cr>
-nmap bp :bp<cr>
-nmap ne :lnext<cr>
-nmap pe :lprev<cr>
+"nmap tl :TlistToggle<cr>
+"nmap bn :bn<cr>
+"nmap bp :bp<cr>
+"nmap ne :lnext<cr>
+"nmap pe :lprev<cr>
 
 autocmd BufWritePre *.py :%s/^\(\s*print\)\s\+\(.*\)/\1(\2)/e
 autocmd BufWritePre *.{vue,cpp,c,d,slm,py,coffee,conf,html,sh,scss,css,js} :%s/\t/    /ge
