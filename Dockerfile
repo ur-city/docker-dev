@@ -15,25 +15,26 @@ add-apt-repository ppa:jonathonf/vim -y;\
 add-apt-repository ppa:deadsnakes/ppa -y;\
 apt-get update;\
 apt-get upgrade -y;\
-apt-get install --allow-unauthenticated -y supervisor zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag tree ctags neovim autojump mlocate redis-server ruby locales libpq-dev rpl python3.7 python3.7-dev python-pip tzdata postgresql-client lsof;\
+apt-get install --allow-unauthenticated -y zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag tree ctags neovim autojump mlocate redis-server ruby locales libpq-dev rpl python3.7 python3.7-dev python-pip tzdata postgresql-client lsof;\
+gem install gist;\
+locale-gen zh_CN.UTF-8;\
+update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8;\
+ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
+dpkg-reconfigure -f noninteractive tzdata;\
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh;\
+update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1;\
+update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2;\
+update-alternatives --set python /usr/bin/python2.7;\
 update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60;\
 update-alternatives --set vi /usr/bin/nvim;\
 update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60;\
 update-alternatives --set vim /usr/bin/nvim;\
 update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
 update-alternatives --set editor /usr/bin/nvim;\
+curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\ 
+vim +PlugInstall +qall;\ 
 pip2 install supervisor;\
-mkdir -p /run/sshd;\
-gem install gist;\
-locale-gen zh_CN.UTF-8;\
-update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8;\
-ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
-dpkg-reconfigure -f noninteractive tzdata;\
-git clone https://github.com/gmarik/Vundle.vim.git /usr/share/vim/vimfiles/bundle/Vundle.vim --depth=1;\
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh;\
-update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1;\
-update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2;\
-update-alternatives --set python /usr/bin/python2.7;
+mkdir -p /run/sshd;
 
 RUN curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash;\
 export NVM_DIR="$HOME/.nvm";\
@@ -48,8 +49,8 @@ pip3 install virtualenv ipython
 RUN cd /tmp;\
 git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
 bash /tmp/docker/install.sh;\
-rm -rf /tmp/docker;\
-vim +PluginInstall +qall;
+rm -rf /tmp/docker;
+
 
 USER root
 CMD ["/etc/rc.local"]
