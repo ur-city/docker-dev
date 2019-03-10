@@ -21,7 +21,9 @@ update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8;\
 ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
 dpkg-reconfigure -f noninteractive tzdata;\
 mkdir -p /run/sshd;\
-wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh;
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | sh;\
+(crontab -l 2>/dev/null; echo "5 5 * * * zsh -c 'DISABLE_AUTO_UPDATE=true && export ZSH=$HOME/.oh-my-zsh && source $ZSH/oh-my-zsh.sh && upgrade_oh_my_zsh 2>&1' >> /dev/null") | crontab -;
+
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1;\
 update-alternatives --install /usr/bin/python python /usr/bin/python2.7 2;\
