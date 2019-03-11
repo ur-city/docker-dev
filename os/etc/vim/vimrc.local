@@ -26,6 +26,7 @@ call plug#begin('/usr/share/vim/vimfiles/bundle')
 " Plug 'kballard/vim-swift'
 " Plug 'tell-k/vim-autopep8'                   " 自动格式化
 " Plug 'ludovicchabant/vim-lawrencium'         " hg插件
+Plug 'urwork/vim-indent-guides'
 Plug 'Chiel92/vim-autoformat'
 Plug 'cakebaker/scss-syntax.vim',{'for':'scss'}
 Plug 'digitaltoad/vim-pug',{'for':'pug'}
@@ -381,6 +382,7 @@ vnoremap <Tab>: :Tab /:<CR>
 vnoremap <Tab>, :Tab /,<CR>
 vnoremap <Tab>= :Tab /=<CR>
 vnoremap <Backspace> :Commentary <CR>
+vnoremap <c-f> y<ESC>/<c-r>"<CR>   
 
 nmap tt :NERDTreeToggle<cr>
 nmap mr :MRU<cr>
@@ -401,3 +403,8 @@ let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
 set backupcopy=yes
 set nofoldenable
 set viminfo='100,<10000,s1000,h
+
+set ts=4 sw=4 et 
+let g:indent_guides_start_level=2
+let g:indent_guides_guide_size=1
+let g:indent_guides_enable_on_vim_startup = 1
