@@ -56,6 +56,7 @@ nvim +PlugInstall +qall;
 
 RUN apt-get install -y libssl-dev cargo pkg-config;\
 cargo install ripgrep tealdeer --root /usr/local/;\
+cargo install --git https://github.com/ogham/exa --root /usr/local;\
 tldr --update;
 
 USER root
