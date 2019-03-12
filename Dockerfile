@@ -54,6 +54,10 @@ rm -rf /tmp/docker;
 RUN curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
 nvim +PlugInstall +qall;
 
+RUN apt-get install -y libssl-dev cargo pkg-config;\
+cargo install ripgrep tealdeer --root /usr/local/;\
+tldr --update;
+
 USER root
 
 CMD ["/etc/rc.local"]
