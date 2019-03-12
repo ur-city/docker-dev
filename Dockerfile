@@ -14,8 +14,12 @@ add-apt-repository ppa:jonathonf/vim -y;\
 add-apt-repository ppa:deadsnakes/ppa -y;\
 apt-get update;\
 apt-get upgrade -y;\
-apt-get install --allow-unauthenticated -y zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag tree ctags neovim autojump mlocate redis-server ruby locales libpq-dev rpl python3.7 python3.7-dev python-pip tzdata postgresql-client lsof;\
-gem install gist;\
+apt-get install --allow-unauthenticated -y \
+libssl-dev pkg-config \
+zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag \
+tree ctags neovim autojump mlocate redis-server ruby locales libpq-dev rpl \
+python3.7 python3.7-dev python-pip tzdata postgresql-client lsof \
+gem install gist jq;\
 locale-gen zh_CN.UTF-8;\
 update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8;\
 ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
@@ -54,13 +58,12 @@ rm -rf /tmp/docker;
 RUN curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
 nvim +PlugInstall +qall;
 
-RUN apt-get install -y libssl-dev pkg-config;\
-export RUSTUP_HOME=/usr/local;\
+RUN export RUSTUP_HOME=/usr/local;\
 export CARGO_HOME=/usr/local;\
 export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup";\
 export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static";\
 curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path;\
-cargo install sd fd-find tokei diskus exa ripgrep tealdeer procs --root /usr/local;\
+cargo install sd fd-find tokei diskus exa ripgrep tealdeer --root /usr/local;\
 tldr --update;
 
 USER root
