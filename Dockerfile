@@ -54,11 +54,14 @@ rm -rf /tmp/docker;
 RUN curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
 nvim +PlugInstall +qall;
 
-RUN apt-get install -y libssl-dev cargo pkg-config;\
-cargo install ripgrep tealdeer --root /usr/local/;\
+RUN apt-get install -y libssl-dev pkg-config;\
+export RUSTUP_HOME=/usr/local;\
+export CARGO_HOME=/usr/local;\
+export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup";\
+export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static";\
+curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path;\
+cargo install exa ripgrep tealdeer --root /usr/local;\
 tldr --update;
-
-RUN cargo install --git https://github.com/ogham/exa --root /usr/local;
 
 USER root
 
