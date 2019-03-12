@@ -60,7 +60,7 @@ export CARGO_HOME=/usr/local;\
 export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup";\
 export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static";\
 curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path;\
-cargo install fd-find exa ripgrep tealdeer --root /usr/local;\
+cargo install sd fd-find tokei diskus exa ripgrep tealdeer --root /usr/local;\
 tldr --update;
 
 USER root
