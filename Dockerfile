@@ -15,7 +15,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path;\
 cargo install exa --root /usr/local;\
 cargo install tealdeer --root /usr/local;\
 tldr --update;\
-cargo install sd fd-find tokei diskus exa ripgrep --root /usr/local;\
+cargo install sd fd-find tokei diskus exa ripgrep --root /usr/local;
 
 RUN \
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;\
