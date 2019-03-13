@@ -45,7 +45,14 @@ update-alternatives --set vi /usr/bin/nvim;\
 update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60;\
 update-alternatives --set vim /usr/bin/nvim;\
 update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
-update-alternatives --set editor /usr/bin/nvim;
+update-alternatives --set editor /usr/bin/nvim;\
+export RUSTUP_HOME=/usr/local;\
+export CARGO_HOME=/usr/local;\
+export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup";\
+export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static";\
+curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path;\
+cargo install sd fd-find tokei diskus exa ripgrep tealdeer --root /usr/local;\
+tldr --update;
 
 RUN cd /tmp;\
 git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
@@ -57,13 +64,6 @@ RUN curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://ra
 nvim +PlugInstall +qall;
 
 
-RUN export RUSTUP_HOME=/usr/local;\
-export CARGO_HOME=/usr/local;\
-export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup";\
-export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static";\
-curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path;\
-cargo install sd fd-find tokei diskus exa ripgrep tealdeer --root /usr/local;\
-tldr --update;
 
 USER root
 
