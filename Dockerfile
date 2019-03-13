@@ -14,6 +14,8 @@ add-apt-repository ppa:jonathonf/vim -y;\
 add-apt-repository ppa:deadsnakes/ppa -y;\
 apt-get update;\
 apt-get upgrade -y;\
+apt-get update;\
+apt-get install -y apt-utils;\
 apt-get install --allow-unauthenticated -y \
 libssl-dev pkg-config \
 zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag \
