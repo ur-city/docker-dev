@@ -6,8 +6,19 @@ RUN apt-get update;\
 apt-get install -y git;\
 apt remove cmdtest;\
 apt-get install -y software-properties-common curl wget sudo rsync;\
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;\
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list;\
+
+RUN export RUSTUP_HOME=/usr/local;\
+export CARGO_HOME=/usr/local;\
+export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup";\
+export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static";\
+curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path;\
+tldr --update;\
+cargo install exa --root /usr/local;\
+cargo install tealdeer --root /usr/local;\
+cargo install sd fd-find tokei diskus exa ripgrep tealdeer --root /usr/local;\
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;
+
+ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list;\
 add-apt-repository ppa:neovim-ppa/stable -y;\
 add-apt-repository ppa:chris-lea/redis-server -y;\
 add-apt-repository ppa:jonathonf/vim -y;\
@@ -45,14 +56,7 @@ update-alternatives --set vi /usr/bin/nvim;\
 update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60;\
 update-alternatives --set vim /usr/bin/nvim;\
 update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60;\
-update-alternatives --set editor /usr/bin/nvim;\
-export RUSTUP_HOME=/usr/local;\
-export CARGO_HOME=/usr/local;\
-export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup";\
-export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static";\
-curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path;\
-cargo install sd fd-find tokei diskus exa ripgrep tealdeer --root /usr/local;\
-tldr --update;
+update-alternatives --set editor /usr/bin/nvim;
 
 RUN cd /tmp;\
 git clone https://github.com/ur-city/docker-dev.git docker --depth=1;\
