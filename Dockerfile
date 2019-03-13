@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update;\
 apt-get install -y git;\
 apt remove cmdtest;\
-apt-get install -y software-properties-common curl wget sudo rsync;\
+apt-get install -y software-properties-common curl wget sudo rsync;
 
 RUN export RUSTUP_HOME=/usr/local;\
 export CARGO_HOME=/usr/local;\
