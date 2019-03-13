@@ -5,9 +5,19 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update;\
 apt-get install -y git;\
 apt remove cmdtest;\
-apt-get install -y software-properties-common curl wget sudo rsync;
+apt-get install -y software-properties-common curl wget sudo rsync;\
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;\
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list;\
+add-apt-repository ppa:neovim-ppa/stable -y;\
+add-apt-repository ppa:chris-lea/redis-server -y;\
+add-apt-repository ppa:jonathonf/vim -y;\
+add-apt-repository ppa:deadsnakes/ppa -y;\
+apt-get update;\
+apt-get upgrade -y;
 
-RUN export RUSTUP_HOME=/usr/local;\
+RUN \
+apt-get install -y libssl-dev pkg-config;\
+export RUSTUP_HOME=/usr/local;\
 export CARGO_HOME=/usr/local;\
 export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup";\
 export RUSTUP_DIST_SERVER="https://mirrors.ustc.edu.cn/rust-static";\
@@ -18,17 +28,8 @@ tldr --update;\
 cargo install sd fd-find tokei diskus ripgrep --root /usr/local;
 
 RUN \
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -;\
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list;\
-add-apt-repository ppa:neovim-ppa/stable -y;\
-add-apt-repository ppa:chris-lea/redis-server -y;\
-add-apt-repository ppa:jonathonf/vim -y;\
-add-apt-repository ppa:deadsnakes/ppa -y;\
-apt-get update;\
-apt-get upgrade -y;\
 apt-get install -y apt-utils;\
 apt-get install --allow-unauthenticated -y \
-libssl-dev pkg-config \
 zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag \
 tree ctags neovim autojump mlocate redis-server ruby locales libpq-dev rpl \
 python3.7 python3.7-dev python-pip tzdata postgresql-client lsof;\
