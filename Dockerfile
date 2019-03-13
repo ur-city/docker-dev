@@ -13,15 +13,16 @@ add-apt-repository ppa:chris-lea/redis-server -y;\
 add-apt-repository ppa:jonathonf/vim -y;\
 add-apt-repository ppa:deadsnakes/ppa -y;\
 apt-get update;\
-apt-get upgrade -y;\
-apt-get update;\
-apt-get install -y apt-utils;\
+apt-get upgrade -y;
+
+RUN apt-get install -y apt-utils;\
 apt-get install --allow-unauthenticated -y \
 zsh openssh-server yarn tmux nodejs tree htop cron silversearcher-ag \
 tree ctags neovim autojump mlocate redis-server ruby locales libpq-dev rpl \
 python3.7 python3.7-dev python-pip tzdata postgresql-client lsof \
-gem install gist jq;\
-locale-gen zh_CN.UTF-8;\
+gem install gist jq;
+
+RUN locale-gen zh_CN.UTF-8;\
 update-locale LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8;\
 ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime;\
 dpkg-reconfigure -f noninteractive tzdata;\
