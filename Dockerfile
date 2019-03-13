@@ -16,7 +16,7 @@ apt-get update;\
 apt-get upgrade -y;
 
 RUN \
-apt-get install -y libssl-dev pkg-config;\
+apt-get install -y libssl-dev pkg-config cmake;\
 export RUSTUP_HOME=/usr/local;\
 export CARGO_HOME=/usr/local;\
 export RUSTUP_UPDATE_ROOT="https://mirrors.ustc.edu.cn/rust-static/rustup";\
