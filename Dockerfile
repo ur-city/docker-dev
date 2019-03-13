@@ -63,8 +63,6 @@ rm -rf /tmp/docker;
 RUN curl -fLo /usr/share/nvim/runtime/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim;\
 nvim +PlugInstall +qall;
 
-
-
 USER root
 
 CMD ["/etc/rc.local"]
